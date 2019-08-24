@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adam and Eva</title>
+</head>
+<body>
+    <script>
+        function Apple(){
+            this.weight= 10;
+            this.decrease= function () {
+                this.weight--;
+            };
+            this.isEmpty=function () {
+                let result=this.weight==0? true: false;
+                return result;
+            };
+
+            this.getWeight=function () {
+              return this.weight;
+            };
+        }
+
+
+
+        function Human(name,gender,weight) {
+            this.name=name;
+            this.gender=gender;
+            this.weight=weight;
+            this.isMale=function () {
+                return this.gender;
+            };
+            this.setGender=function (gender) {
+                this.gender=gender;
+            };
+            this.checkApple=function (apple) {
+                return apple.isEmpty();
+            };
+            this.eatApple=function(apple){
+                apple.decrease();
+            };
+
+            this.say= function (message) {
+                return this.name + " say: " + message;
+            };
+
+            this.getName=function(){
+                return this.name;
+            };
+            this.setName=function(name){
+                this.name=name;
+            };
+            this.getWeight=function () {
+                return this.weight;
+            };
+            this.setWeight=function(weight){
+                this.weight +=weight;
+            }
+
+        }
+        //////////////////
+
+        let apple= new Apple();
+        let adam= new Human("Adam",true,80);
+        let eva= new Human("Eva",false,60);
+
+        if(adam.isMale()){
+            alert(adam.say("tôi là đực"));
+        }
+        let flag=true;
+        let eatHuman;
+        while (!apple.isEmpty()){
+            if(flag){
+                eatHuman=adam;
+                flag=false;
+            }else{
+                eatHuman=eva;
+                flag=true;
+            }
+            eatHuman.eatApple(apple);
+            eatHuman.setWeight(1);
+            alert(eatHuman.say("Ăn Đi " + ". Apple remain:" + apple.getWeight()));
+        }
+        alert("Weight of Adam:" + adam.getWeight());
+        alert("Weight of Eva:" + eva.getWeight());
+        alert("Weight of Apple:" + apple.getWeight());
+
+
+
+
+    </script>
+
+</body>
+</html>
